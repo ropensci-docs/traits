@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "c6ffea4193e659f78856e8570f296dea8c09555e",
+    "author": "Scott Chamberlain <myrmecocystus@gmail.com>",
+    "time": "2020-08-26 17:53:39",
+    "files": 3,
+    "merge": false,
+    "message": "update news that coral fxns defunct, cran comments, codemeta.json\n"
+  },
+  "remote": "https://github.com/ropensci/traits",
+  "pkg": "traits"
+}

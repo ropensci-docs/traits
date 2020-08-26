@@ -1,0 +1,11 @@
+pandoc: '2.5'
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  betydb: betydb.html
+  traits: traits.html
+last_built: 2021-07-19T22:16Z
+urls:
+  reference: https://docs.ropensci.org/traits/reference
+  article: https://docs.ropensci.org/traits/articles
+
