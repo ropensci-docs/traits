@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "decc484c416e8c06daa56de8add64718b25da30e",
+    "author": "David LeBauer <dlebauer@arizona.edu>",
+    "time": "2022-09-13 01:05:29",
+    "files": 5,
+    "merge": true,
+    "message": "Merge pull request #127 from dlebauer/master\n\nmaintainer change"
+  },
+  "repo": "https://github.com/ropensci/traits",
+  "pkg": "traits"
+}
