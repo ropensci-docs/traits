@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "b07eea030146bc92fd32d0c710fe438292932e51",
+    "author": "David LeBauer <dlebauer@gmail.com>",
+    "time": "2026-02-18T21:50:22Z",
+    "files": 1,
+    "merge": false,
+    "message": "Improve warning message for non-interactive sessions"
+  },
+  "repo": "https://github.com/ropensci/traits",
+  "pkg": "traits",
+  "time": "2026-08-30T07:40:11Z"
+}
