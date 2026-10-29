@@ -1,0 +1,115 @@
+# Query a BETY table
+
+Query a BETY table
+
+## Usage
+
+``` r
+betydb_query(
+  ...,
+  table = "search",
+  key = NULL,
+  api_version = NULL,
+  betyurl = NULL,
+  user = NULL,
+  pwd = NULL,
+  progress = TRUE
+)
+
+betydb_search(
+  query = "Maple SLA",
+  ...,
+  include_unchecked = NULL,
+  progress = TRUE
+)
+```
+
+## Arguments
+
+- ...:
+
+  (named character) Columns to query, as key="value" pairs. Note that
+  betydb_query passes these along to BETY with no check whether the
+  requested keys exist in the specified table.
+
+- table:
+
+  (character) The name of the database table to query, or "search" (the
+  default) for the traits and yields view
+
+- key:
+
+  (character) An API key. Use this or user/pwd combo. Save in your
+  `.Rprofile` file as `options(betydb_key = "your40digitkey")`. Optional
+
+- api_version:
+
+  (character) Which version of the BETY API should we query? One of "v0"
+  or "beta". Default is `options("betydb_api_version")` if set,
+  otherwise "v0".
+
+- betyurl:
+
+  (string) url to target instance of betydb. Default is
+  `options("betydb_url")` if set, otherwise "https:/www.betydb.org/"
+
+- user, pwd:
+
+  (character) A user name and password. Use a user/pwd combo or an API
+  key. Save in your `.Rprofile` file as
+  `options(betydb_user = "yournamehere")` and
+  `options(betydb_pwd = "yourpasswordhere")`. Optional
+
+- progress:
+
+  show progress bar? default: `TRUE`
+
+- query:
+
+  (character) A string containing one or more words to be queried across
+  all columns of the "search" table.
+
+- include_unchecked:
+
+  (logical) Include results that have not been quality checked? Applies
+  only to tables with a "checked" column: "search", "traits", "yields".
+  Default is to exclude unchecked values.
+
+## Value
+
+A data.frame with attributes containing request metadata, or NULL if the
+query produced no results
+
+## Details
+
+Use betydb_query to retrieve records from a table that match on all the
+column filters specified in '...'. If no filters are specified,
+retrieves the whole table. In API versions that support it (i.e. not in
+v0), filter strings beginning with "~" are treated as regular
+expressions.
+
+## Examples
+
+``` r
+# \donttest{
+if (interactive()) {
+  # literal vs regular expression vs anchored regular expression:
+  betydb_query(units = "Mg", table = "variables")
+  # NULL
+  betydb_query(units = "Mg/ha", table = "variables")[["name"]]
+  # $name
+  # [1] "a_biomass"                  "root_live_biomass"
+  # [3] "leaf_dead_biomass_in_Mg_ha" "SDM"
+
+  nrow(betydb_query(genus = "Miscanthus", table = "species"))
+  # [1] 10
+  unique(betydb_query(genus = "~misc", table = "species", api_version = "beta")[["genus"]])
+  # $genus
+  # [1] "Platymiscium" "Miscanthus"   "Dermiscellum"
+
+  unique(betydb_query(genus = "~^misc", table = "species", api_version = "beta")[["genus"]])
+  # $genus
+  # [1] "Miscanthus"
+}
+# }
+```
